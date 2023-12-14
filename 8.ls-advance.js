@@ -1,5 +1,7 @@
 const fs = require("node:fs/promises");
 const path = require("node:path");
+const pc = require("picocolors"); //dependencia de produccion se nececita para que funcione el color en la consola
+//las dependencia de desarrollo son las que se usan para el desarrollo del proyecto
 
 const folder = process.argv[2] ?? "."; //el ?? es para que si no se le pasa un argumento, tome el valor de "."
 
@@ -8,7 +10,7 @@ async function ls(directory) {
   try {
     files = await fs.readdir(directory);
   } catch {
-    console.log("Error al leer el directorio");
+    console.log(pc.red("❌Error al leer el directorio"));
     process.exit(1);
   }
   const filesPromises = files.map(async (file) => {
@@ -24,9 +26,10 @@ async function ls(directory) {
     const fileType = isDirectory ? "d" : "-";
     const filesSize = stats.size;
     const fileModified = stats.mtime.toLocaleString();
-    return `${fileType} ${file.padEnd(20)} ${filesSize
+    return `${fileType} ${pc.blue(file.padEnd(20))} ${pc
+      .green(filesSize)
       .toString()
-      .padStart(10)} ${fileModified} `;
+      .padStart(10)} ${pc.yellow(fileModified)} `;
   });
   const fileInfo = await Promise.all(filesPromises);
 

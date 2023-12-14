@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/camilo-a-g-z/LearningNode/issues"
   },
-  "homepage": "https://github.com/camilo-a-g-z/LearningNode#readme"
+  "homepage": "https://github.com/camilo-a-g-z/LearningNode#readme",
+  "dependencies": {
+    "picocolors": "1.0.0"
+  },
+  "devDependencies": {
+    "standard": "^17.1.0"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
 }
