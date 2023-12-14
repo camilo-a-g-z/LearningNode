@@ -1,0 +1,23 @@
+{
+  "name": "node-learning",
+  "version": "1.0.0",
+  "description": "The best node course for 0$",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camilo-a-g-z/LearningNode.git"
+  },
+  "keywords": [
+    "curso",
+    "node"
+  ],
+  "author": "Camilo Andres Garcia Zambrano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/camilo-a-g-z/LearningNode/issues"
+  },
+  "homepage": "https://github.com/camilo-a-g-z/LearningNode#readme"
+}
