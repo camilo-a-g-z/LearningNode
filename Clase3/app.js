@@ -1,8 +1,11 @@
 //npm install express - E  --> el -E es para que lo guarde en el package.json y que tenga la version exacta
 const express = require("express");
+const crypto = require("node:crypto");
 const movies = require("./movies.json");
+const { validateMovie } = require("./schemas/movies.js");
 
 const app = express();
+app.use(express.json());
 app.disable("x-powered-by");
 
 //Un endpoint es un path en el que tenemos un recurso
@@ -17,6 +20,19 @@ app.get("/movies", (req, res) => {
     return res.json(filteredMovies);
   }
   res.json(movies);
+});
+
+//el recurso siempre se identifica con la misma url
+app.post("/movies", (req, res) => {
+  const result = validateMovie(req.body);
+  if (result.error)
+    return res.status(400).json({ message: JSON.parse(result.error.message) });
+  const newMovie = {
+    id: crypto.randomUUID(),
+    ...result.data,
+  };
+  movies.push(newMovie);
+  res.status(201).json(newMovie); //sirve para actualizar la cache del cliente
 });
 
 //:id es un parametro que se puede pasar por la url
