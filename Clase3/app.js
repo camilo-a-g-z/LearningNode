@@ -8,10 +8,16 @@ const app = express();
 app.use(express.json());
 app.disable("x-powered-by");
 
+const ACCEPTED_ORIGINS = ["http://localhost:8080", "http://localhost:3000"];
 //Un endpoint es un path en el que tenemos un recurso
 
 //Todos los recursos que sean MOVIES se identifican con el /movies
 app.get("/movies", (req, res) => {
+  const origin = req.header("origin");
+  if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
+    //con esto se evita el problema de cors que es cuando se intenta acceder a un recurso desde un dominio distinto
+    res.header("Access-Control-Allow-Origin", origin); //para que solo se pueda acceder desde ese dominio
+  }
   const { genre } = req.query;
   if (genre) {
     const filteredMovies = movies.filter((movie) =>
