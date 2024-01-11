@@ -11,7 +11,7 @@ const movieSquema = z.object({
   year: z.number().int().min(1888).max(2077),
   director: z.string(),
   duration: z.number().int().min(1).max(300),
-  rate: z.number().min(0).max(10),
+  rate: z.number().min(0).max(10).default(5),
   poster: z.string().url({
     message: "Movie poster must be a valid URL",
   }),
@@ -25,6 +25,11 @@ function validateMovie(object) {
   return movieSquema.safeParse(object);
 }
 
+function validatePartialMovie(object) {
+  return movieSquema.partial().safeParse(object);
+}
+
 module.exports = {
   validateMovie,
+  validatePartialMovie,
 };

@@ -23,3 +23,13 @@ Content-Type: application/json
     ],
     "rate" : 9.2
 }
+
+### Actualizar una pelicula
+
+PATCH http://localhost:3000/movies/963be841-6533-432b-aaa2-2e64c6504980
+Content-Type: application/json
+
+{
+    "year": 1994
+}
+ 
