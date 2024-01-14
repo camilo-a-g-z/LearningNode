@@ -9,6 +9,7 @@ export class MovieModel {
         movie.genre.some((g) => g.toLowerCase() === genre.toLowerCase())
       );
     }
+    return movies;
   }
 
   static getById = async ({ id }) => {
