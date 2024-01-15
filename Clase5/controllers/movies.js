@@ -1,4 +1,5 @@
-import { MovieModel } from "../models/movie.js";
+//import { MovieModel } from "../models/movie.js";
+import { MovieModel } from "../models/mysql/movie.js";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const movies = require("../movies.json");
