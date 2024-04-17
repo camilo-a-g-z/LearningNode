@@ -1,8 +1,7 @@
 import z from "zod";
 
 const movieSquema = z.object({
-  title: z
-    .string({
+  title: z.string({
       invalid_type_error: "Movie title must be a string",
       required_error: "Movie title is required",
     })
